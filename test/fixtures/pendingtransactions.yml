@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from_user_id: 1
+  to_user_id: 1
+  amount: MyString
+  aproved: false
+  declined: false
+  expdate: MyString
+  timestamp: MyString
+  seen: false
+
+two:
+  from_user_id: 1
+  to_user_id: 1
+  amount: MyString
+  aproved: false
+  declined: false
+  expdate: MyString
+  timestamp: MyString
+  seen: false

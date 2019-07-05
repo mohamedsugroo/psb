@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  status_aproved: false
+  aproved_by: 1
+  personal_account: false
+  business_account: false
+  balance: MyString
+
+two:
+  user_id: 1
+  status_aproved: false
+  aproved_by: 1
+  personal_account: false
+  business_account: false
+  balance: MyString
