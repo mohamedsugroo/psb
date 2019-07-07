@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get 'api/index'
   namespace :api do
     namespace :v1 do
@@ -11,14 +10,15 @@ Rails.application.routes.draw do
 
 
   # test the jwt class
-  get 'auth/test', to: 'authentication#test'
+  # get 'auth/test', to: 'authentication#test'
 
   resources :users, param: :_username
   post '/auth/login', to: 'authentication#login'
   get '/*a', to: 'application#not_found'
 
   namespace :api do
-  	namespace :v1 do
+    namespace :v1 do
+      resources :apps
       resources :users
       post 'search', to: 'search#index'
       post '/friends', to: 'friends#index'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_09_102706) do
+ActiveRecord::Schema.define(version: 2019_07_07_045918) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
@@ -20,6 +20,21 @@ ActiveRecord::Schema.define(version: 2019_06_09_102706) do
     t.boolean "business_account"
     t.string "balance"
     t.string "date_approved"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "apps", force: :cascade do |t|
+    t.string "name"
+    t.string "access_token"
+    t.integer "user_id"
+    t.string "uidn"
+    t.string "app_type"
+    t.boolean "approved"
+    t.boolean "pending_approval"
+    t.boolean "active"
+    t.boolean "suspended"
+    t.boolean "soft_delete"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

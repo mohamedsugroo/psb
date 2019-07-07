@@ -14,15 +14,15 @@ class AuthenticationController < ApplicationController
     end
   end
 
-  def test 
-  	exp = 24.hours.from_now
-  	 render json: {
-  	 	token1: 1,
-  	 	exp: exp.to_i,
-  	 	enc: JsonWebToken.encode(user_id: 1),
-  	 	dec: JsonWebToken.decode("eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTgyODEyMzl9._7FDS6Xmd5Vj28TaFaI08FvAjcoTaZh7cYH-3lYN-MI")
-  	 }
-  end
+  # def test 
+  # 	exp = 24.hours.from_now
+  # 	 render json: {
+  # 	 	token1: 1,
+  # 	 	exp: exp.to_i,
+  # 	 	enc: JsonWebToken.encode(user_id: 1),
+  # 	 	dec: JsonWebToken.decode("eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTgyODEyMzl9._7FDS6Xmd5Vj28TaFaI08FvAjcoTaZh7cYH-3lYN-MI")
+  # 	 }
+  # end
 
   private
 
