@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   root 'api#index'
   namespace :api do
     namespace :v1 do
+      # connect
+      namespace :connect do 
+        get '/', to: 'connect#index'
+      end
       get 'users/index'
       # apps
       resources :apps
