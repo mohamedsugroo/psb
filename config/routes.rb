@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  get 'api/index'
+  root 'api#index'
   namespace :api do
     namespace :v1 do
       get 'users/index'
+      # apps
+      resources :apps
+      # post 'apps', to: 'apps#index'
+      # get 'apps', to: 'apps#index'
+      # end apps 
     end
   end
   root 'home#index'
@@ -18,7 +23,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :apps
+      # resources :apps
       resources :users
       post 'search', to: 'search#index'
       post '/friends', to: 'friends#index'
