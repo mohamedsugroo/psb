@@ -5,12 +5,8 @@ ruby '2.6.3'
 
 gem 'rails', '~> 6.0.0.rc1'
 gem 'puma', '~> 3.11'
-# gem 'passenger', '~> 5.0', '>= 5.0.30'
-# gem 'graphql'
 gem 'jbuilder', '~> 2.5'
-# gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
-# gem 'image_processing', '~> 1.2'
 gem 'bootsnap', '>= 1.4.2', require: false
 gem 'rack-cors'
 gem 'jwt'
@@ -29,8 +25,6 @@ group :development do
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-
 
 group :production do
 	gem 'pg', '>= 0.18', '< 2.0'

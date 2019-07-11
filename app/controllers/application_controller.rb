@@ -18,6 +18,18 @@ class ApplicationController < ActionController::API
 	end
 
 	def connect_auth
-
+		header = request.headers['Authorization']
+		header = header.split(' ').last if header
+		begin 
+			authenticate(1,1)
+		rescue ActiveRecord::RecordNotFound => e
+			render json: { errors: e.message }, status: :unauthorized
+		end
 	end
+
+	def authenticate(auth,current)
+		auth == current
+	end
+
+
 end
