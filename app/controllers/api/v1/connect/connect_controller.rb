@@ -1,7 +1,12 @@
 class Api::V1::Connect::ConnectController < ApplicationController
     # before_action :connect_auth
     def index
-        render json: 'connect'
+
+        app = { name: "hello world", request_count: 600000 }
+        render json: {
+            app: app
+        } 
+
     end
 
 

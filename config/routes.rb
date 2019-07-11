@@ -7,11 +7,7 @@ Rails.application.routes.draw do
         get '/', to: 'connect#index'
       end
       get 'users/index'
-      # apps
       resources :apps
-      # post 'apps', to: 'apps#index'
-      # get 'apps', to: 'apps#index'
-      # end apps 
     end
   end
   # root 'home#index'
