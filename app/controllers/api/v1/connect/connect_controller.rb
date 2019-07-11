@@ -1,13 +1,7 @@
 class Api::V1::Connect::ConnectController < ApplicationController
-
+    before_action :authorize_request
     def index
-
-        app = { name: "hello world", request_count: 600000, }
-
-        render json: {
-            app: app
-        }
-
+        render json: App.all
     end
 
 
