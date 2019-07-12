@@ -26,9 +26,9 @@ module Blockchain
 		end
 
 		def cal_hash
-			sha = Digest::SHA256.new
-			sha.update( @timestamp.to_s + @previous_hash.to_s + @from.to_s + @to.to_s + @amount.to_s )
-			sha.hexdigest
+			# sha = Digest::SHA256.new
+			# sha.update( @timestamp.to_s + @previous_hash.to_s + @from.to_s + @to.to_s + @amount.to_s )
+			# sha.hexdigest
 		end
 
 		def cost
