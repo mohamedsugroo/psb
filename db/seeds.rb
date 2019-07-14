@@ -21,4 +21,4 @@
 # Friend.create(user_id: 1, friend_id: 2)
 # Friend.create(user_id: 2, friend_id: 1)
 
-App.create(name: '123 Cart', user_id: 1, app_type: 'online shoping cart')
+# App.create(name: '123 Cart', user_id: 1, app_type: 'online shoping cart')

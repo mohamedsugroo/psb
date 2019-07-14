@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       end
       get 'users/index'
       # get '/apps', to: 'apps#index'
-      resources :apps
+      resources :apps, except: [:create]
     end
   end
   # root 'home#index'
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     namespace :v1 do
       # resources :apps
       resources :users
+      # create new app
+      post '/apps/create', to: 'apps#create'
       post 'search', to: 'search#index'
       post '/friends', to: 'friends#index'
       post '/addfriend', to: 'friends#create'

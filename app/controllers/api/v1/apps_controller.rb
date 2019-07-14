@@ -5,8 +5,8 @@ module Api
       before_action :set_app, only: [:show, :update, :destroy]
 
       def index
-        apps = App.all
-        render json: apps
+        @apps = App.all
+        # render json: apps
       end
 
       def show
