@@ -46,7 +46,7 @@ module Api
         end
 
         def app_params
-          params.require(:app).permit(:name, :access_token, :user_id, :uidn, :app_type, :approved, :pending_approval, :active, :suspended, :soft_delete)
+          params.permit(:name, :access_token, :user_id, :uidn, :app_type, :approved, :pending_approval, :active, :suspended, :soft_delete)
         end
 
 

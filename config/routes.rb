@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         get '/', to: 'connect#index'
       end
       get 'users/index'
+      # get '/apps', to: 'apps#index'
       resources :apps
     end
   end
