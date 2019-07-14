@@ -80,7 +80,7 @@ class UsersController < ApplicationController
       user: {
         id: @user.id,
         username: @user.username,
-        email: @user.email,
+        email: @user.emaqil,
         first_name: @user.first_name.to_s,
         middle_name: @user.middle_name.to_s,
         last_name: @user.last_name.to_s,

@@ -11,7 +11,7 @@ class CreateApps < ActiveRecord::Migration[6.0]
       t.boolean :active
       t.boolean :suspended
       t.boolean :soft_delete
-
+      
       t.timestamps
     end
   end
