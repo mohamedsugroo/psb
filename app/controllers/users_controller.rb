@@ -78,10 +78,9 @@ class UsersController < ApplicationController
     
     render json: {
       user: {
-        username: @user.username,
         id: @user.id,
-        email: @user.email,
         username: @user.username,
+        email: @user.email,
         first_name: @user.first_name.to_s,
         middle_name: @user.middle_name.to_s,
         last_name: @user.last_name.to_s,
