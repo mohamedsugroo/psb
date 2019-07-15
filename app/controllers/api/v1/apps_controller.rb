@@ -2,7 +2,7 @@ module Api
   module V1
     class AppsController < ApplicationController
       before_action :authorize_request
-      before_action :set_app, only: [:show, :update, :destroy]
+      before_action :set_app, only: [:update, :destroy]
 
       def index
         apps = App.all
@@ -10,6 +10,7 @@ module Api
       end
 
       def show
+        @app = App.find(params[:uidn])
         render json: @app
       end
 
