@@ -12,6 +12,7 @@ gem 'rack-cors'
 gem 'jwt'
 gem 'openssl', '~> 2.1'
 gem 'paperclip', '~> 6.0.0'
+gem 'aws-sdk-rails'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

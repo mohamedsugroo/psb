@@ -1,4 +1,29 @@
 Rails.application.routes.draw do
+
+  # Api Version 2 routes
+
+  namespace :api do
+    namespace :v2 do
+      get '/', to: 'home#index' # root / get
+      post '/', to: 'home#index' # root / post
+      get '/login', to: 'home#login' # login user authentication
+      get '/resetpassword', to: 'home#resetpassword'
+
+      # routes with emails
+
+      get '/change_password', to: 'users#change_password'
+
+      resources :users, only: [:create, :update]
+
+      namespace :apps do 
+      end # apps
+
+    end # version
+  end # api
+
+
+
+  # Api Version 1 routes
   root 'api#index'
   namespace :api do
     namespace :v1 do

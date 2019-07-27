@@ -1,5 +1,6 @@
 class ApiController < ApplicationController
-  def index
-    render json: :ok
-  end
+	Crypto = Api::V2::Crypto # encryption module
+	def index
+		render json: :ok
+	end
 end
