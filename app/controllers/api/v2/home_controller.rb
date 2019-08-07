@@ -24,14 +24,6 @@ class Api::V2::HomeController < ApiController
 	end
 
 	def check_token
-		token = params[:key].to_s
-		begin
-			data = Crypto.decrypt(token)
-			render json: { status: :passed , data: data}
-		rescue ActiveRecord::RecordNotFound => e
-			render json: { status: :failed, errors: e.message }, status: :unauthorized
-		rescue JWT::DecodeError => e
-		  render json: { status: :expired, errors: e.message }, status: :unauthorized
-		end
+		render json: validate_token(params[:key])
 	end
 end
