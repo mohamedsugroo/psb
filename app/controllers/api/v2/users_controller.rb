@@ -12,7 +12,6 @@ class Api::V2::UsersController < ApiController
 				Rails.logger.info(err.message)
 			end
 		else
-			flash.now[:alert] = t('.failure')
 			render json: { errors: @user.errors.full_messages },
 			status: :unprocessable_entity
 		end
@@ -20,12 +19,31 @@ class Api::V2::UsersController < ApiController
 	end
 
 	def change_password
-		key = Crypto.encrypt(user_id: 'hello')
+		# questions 
+		# pin code 16 digits
+		# what is your username
+		# 2 security questions
+			# question 1
+			# answer 1
+			# question 2
+			# answer 2
+			# if all information is correct the ask for new password
+			# Auth.match_answer('original answer','current answer')
 		render json: {
-			params: params,
-			key: key,
-			key_decrypted: Crypto.decrypt(key)
+			answer1: Auth.match_answer('h','h'),
+			answer2: Auth.match_answer('Anime','a n i m e'),
 		}
+
+		# @user = User.where(username: params[:username]) if params[:username]
+		# data = {
+		# 	username: @username
+		# }
+		# key = Crypto.encrypt(data)
+		# render json: {
+		# 	params: params,
+		# 	key: key,
+		# 	key_decrypted: Crypto.decrypt(key)
+		# }
 	end
 
 	private

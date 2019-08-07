@@ -19,13 +19,19 @@ class Api::V2::HomeController < ApiController
 
 	def resetpassword
 		# pin code 16 digits
-
 		@user = User.find_by_username(params[:username]) if params[:username]
-
-		# params.each do 'item'
-		# 	item[:pirth_place] = @user.pirth_place
-		# end
-
 		render json: @user
+	end
+
+	def check_token
+		token = params[:key].to_s
+		begin
+			data = Crypto.decrypt(token)
+			render json: { status: :passed , data: data}
+		rescue ActiveRecord::RecordNotFound => e
+			render json: { status: :failed, errors: e.message }, status: :unauthorized
+		rescue JWT::DecodeError => e
+		  render json: { status: :expired, errors: e.message }, status: :unauthorized
+		end
 	end
 end

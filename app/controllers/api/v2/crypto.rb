@@ -12,4 +12,5 @@ module Api::V2::Crypto
 		decoded = JWT.decode(token, SECRET_KEY)[0]
 		return HashWithIndifferentAccess.new decoded
 	end
+	
 end

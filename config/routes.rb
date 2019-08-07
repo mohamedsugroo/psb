@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       post '/', to: 'home#index' # root / post
       get '/login', to: 'home#login' # login user authentication
       get '/resetpassword', to: 'home#resetpassword'
+      get '/check_token', to: 'home#check_token'
 
       # routes with emails
 
@@ -17,6 +18,9 @@ Rails.application.routes.draw do
 
       namespace :apps do 
       end # apps
+
+      # transaction routes
+      get '/transactions', to: 'transactions#index'
 
     end # version
   end # api
