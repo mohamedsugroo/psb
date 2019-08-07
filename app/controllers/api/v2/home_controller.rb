@@ -9,7 +9,7 @@ class Api::V2::HomeController < ApiController
 	def login
 		@user = User.find_by_username(params[:username])
 		if @user&.authenticate(params[:password])
-			token = JsonWebToken.encode({user_id: @user.id, username: @user.username})
+			token = Crypto.encrypt({user_id: @user.id, username: @user.username})
 			time = Time.now + 18.hours.to_i
 			render json: { token: token, exp: time.strftime("%m-%d-%Y %H:%M"), username: @user.username }, status: :ok
        else
