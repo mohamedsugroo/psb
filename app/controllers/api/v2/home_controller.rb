@@ -25,8 +25,11 @@ class Api::V2::HomeController < ApiController
 
 	def check_token
 		key = params[:key]
-		render json: validate_token(key)[0] if key.length > 10
-		render json: {error: 'Invalid Access Token'} if key.length < 10
-		render json: {error: 'No Access Token Detected . . .'} if !key
+		if key
+			render json: validate_token(key)
+			 # if key.length || 'hello'
+			# render json: {logged_in: false, error: 'Invalid Access Token'} if key.length < 10
+		end
+		render json: {logged_in: false, error: 'No Access Token Detected . . .'} if !key
 	end
 end
