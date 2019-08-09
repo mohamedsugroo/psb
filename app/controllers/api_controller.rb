@@ -15,9 +15,9 @@ class ApiController < ApplicationController
 			data = Crypto.decrypt(token)
 			return { status: :passed , data: data}
 		rescue ActiveRecord::RecordNotFound => e
-			return { status: :failed, errors: e.message }, status: :unauthorized
+			return { logged_in: false, errors: e.message }, status: :unauthorized
 		rescue JWT::DecodeError => e
-		  return { status: :expired, errors: e.message }, status: :unauthorized
+		  return { logged_in: false, errors: e.message }, status: :unauthorized
 		end
 	end
 end
