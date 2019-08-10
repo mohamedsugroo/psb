@@ -1,4 +1,5 @@
 class Api::V2::HomeController < ApiController
+	before_action :current_user, only: [:account]
 	def index
 		render json: {
 			alert: 'Please login to use this api',
@@ -31,5 +32,10 @@ class Api::V2::HomeController < ApiController
 			# render json: {logged_in: false, error: 'Invalid Access Token'} if key.length < 10
 		end
 		render json: {logged_in: false, error: 'No Access Token Detected . . .'} if !key
+	end
+
+	def account
+		@user = User.find_by_username(current_user.username)
+		render json: @user
 	end
 end

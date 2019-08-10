@@ -9,6 +9,20 @@ class ApiController < ApplicationController
 		render json: :ok
 	end
 
+	def current_user
+		header = request.headers['Authorization']
+		header = header.split(' ').last if header
+		begin
+		  @decoded = Crypto.decrypt(header)
+		  @current_user = User.find(@decoded[:user_id])
+		rescue ActiveRecord::RecordNotFound => e
+		  render json: { errors: e.message }, status: :unauthorized
+		rescue JWT::DecodeError => e
+		  render json: { errors: e.message }, status: :unauthorized
+		end
+	end
+
+
 	def validate_token(token)
 		token = token.to_s
 		begin

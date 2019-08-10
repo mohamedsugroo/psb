@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       get '/login', to: 'home#login' # login user authentication
       get '/resetpassword', to: 'home#resetpassword'
       get '/check_token', to: 'home#check_token'
+      get '/current_user', to: 'home#account'
 
       # routes with emails
 
