@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  # root 
+  root 'api#index'
+
+
   # Api Version 2 routes
 
   namespace :api do
@@ -10,6 +14,9 @@ Rails.application.routes.draw do
       get '/resetpassword', to: 'home#resetpassword'
       get '/check_token', to: 'home#check_token'
       get '/current_user', to: 'home#account'
+      get '/expense', to: 'home#expense'
+      get '/search', to: 'home#search'
+
 
       # routes with emails
 
@@ -29,7 +36,6 @@ Rails.application.routes.draw do
 
 
   # Api Version 1 routes
-  root 'api#index'
   namespace :api do
     namespace :v1 do
       # connect
@@ -43,7 +49,6 @@ Rails.application.routes.draw do
   end
   # root 'home#index'
   # resources :transfers
-
 
   # test the jwt class
   # get 'auth/test', to: 'authentication#test'

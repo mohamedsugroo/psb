@@ -19,31 +19,7 @@ class Api::V2::UsersController < ApiController
 	end
 
 	def change_password
-		# questions 
-		# pin code 16 digits
-		# what is your username
-		# 2 security questions
-			# question 1
-			# answer 1
-			# question 2
-			# answer 2
-			# if all information is correct the ask for new password
-			# Auth.match_answer('original answer','current answer')
-		render json: {
-			answer1: Auth.match_answer('h','h'),
-			answer2: Auth.match_answer('Anime','a n i m e'),
-		}
-
-		# @user = User.where(username: params[:username]) if params[:username]
-		# data = {
-		# 	username: @username
-		# }
-		# key = Crypto.encrypt(data)
-		# render json: {
-		# 	params: params,
-		# 	key: key,
-		# 	key_decrypted: Crypto.decrypt(key)
-		# }
+		render json: 'Change Password'
 	end
 
 	private

@@ -1,5 +1,5 @@
 class Api::V2::HomeController < ApiController
-	before_action :current_user, only: [:account]
+	before_action :current_user, only: [:account, :spent, :search]
 	def index
 		render json: {
 			alert: 'Please login to use this api',
@@ -37,5 +37,20 @@ class Api::V2::HomeController < ApiController
 	def account
 		@user = User.find_by_username(current_user.username)
 		render json: @user
+	end
+
+	def expense
+		@user = User.find_by_username(current_user.username)
+		@blocks = Block.where(from: current_user.username)
+	end
+
+	def search
+		query = params[:query]
+		if query
+			@user = User.where("username LIKE :query", query: "%#{query}%")
+			render json: @user
+		else
+			render json: {error: 'No query detected'}
+		end
 	end
 end
