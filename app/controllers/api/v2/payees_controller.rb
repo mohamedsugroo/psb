@@ -2,8 +2,13 @@ class Api::V2::PayeesController < ApiController
 	before_action :current_user
 
 	def index
+		payees = current_user.friends
+		payeeList = []
+		payees.each do |payee|
+			payeeList << User.find_by_id(payee.friend_id)
+		end
 		render json: {
-			payees: current_user.friends
+			payees: payeeList
 		}
 	end
 
