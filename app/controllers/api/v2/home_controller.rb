@@ -1,5 +1,5 @@
 class Api::V2::HomeController < ApiController
-	before_action :current_user, only: [:account, :expense, :search]
+	before_action :current_user, only: [:account, :spent, :search]
 	before_action :profile
 
 	def index
@@ -37,13 +37,13 @@ class Api::V2::HomeController < ApiController
 	end
 
 	def account
-		@user = User.find_by_username(@profile.username)
+		@user = User.find_by_username(current_user.username)
 		render json: @user
 	end
 
 	def expense
-		# @user = User.where(username: current_user.username).first
-		@blocks = Block.where(from: @profile.username)
+		@user = User.where(username: current_user.username).first
+		@blocks = Block.where(from: @user.username)
 		render json: @blocks
 	end
 
@@ -58,7 +58,9 @@ class Api::V2::HomeController < ApiController
 	end
 
 	def payees
-		render json: @profile.friends
+		user = User.where(username: current_user.username).first
+		@payees = user.friends
+		render json: @payees
 	end
 
 	private
