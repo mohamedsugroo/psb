@@ -3,10 +3,8 @@ class Api::V2::PayeesController < ApiController
 
 	def index
 		payees = current_user.friends
-		payees.each { |payee|  payee.user = User}
-		render json: {
-			payees: payees
-		}
+		
+		render json: payees.map { |payee|  payee.user}
 	end
 
 	def create
