@@ -3,18 +3,9 @@ class Api::V2::PayeesController < ApiController
 
 	def index
 		payees = current_user.friends
-		payeeList = []
-		payees.each do |payee|
-			user = User.where(id: payee.friend_id).first
-			payeeList.push({
-				username: user.username,
-				first_name: user.first_name,
-				middle_name: user.middle_name,
-				last_name: user.last_name
-			})
-		end
+		payees.each { |payee|  payee.user = User}
 		render json: {
-			payees: payeeList
+			payees: payees
 		}
 	end
 
