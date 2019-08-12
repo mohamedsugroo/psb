@@ -1,8 +1,12 @@
 class Api::V2::PayeesController < ApiController
 	before_action :current_user
-	before_action :payees_list, only: [:index]
+	before_action :payees_list, only: [:index, :list]
 
 	def index
+		render json: @payees
+	end
+
+	def list
 		render json: @payees
 	end
 

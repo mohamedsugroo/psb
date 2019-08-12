@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
       # payees
       resources :payees, only: [:index, :create]
+      post '/payees/list', to: "payees#list"
 
 
       # routes with emails
