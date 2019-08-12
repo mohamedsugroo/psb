@@ -36,8 +36,7 @@ class Api::V2::HomeController < ApiController
 	end
 
 	def account
-		@user = User.find_by_username(current_user.username)
-		render json: @user
+		render json: current_user
 	end
 
 	def expense
