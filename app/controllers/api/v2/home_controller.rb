@@ -1,5 +1,7 @@
 class Api::V2::HomeController < ApiController
-	before_action :current_user, only: [:account, :spent, :search]
+	before_action :current_user, only: [:account, :expense, :search]
+	before_action :profile
+
 	def index
 		render json: {
 			alert: 'Please login to use this api',
@@ -35,13 +37,14 @@ class Api::V2::HomeController < ApiController
 	end
 
 	def account
-		@user = User.find_by_username(current_user.username)
+		@user = User.find_by_username(@profile.username)
 		render json: @user
 	end
 
 	def expense
-		@user = User.find_by_username(current_user.username)
-		@blocks = Block.where(from: current_user.username)
+		# @user = User.where(username: current_user.username).first
+		@blocks = Block.where(from: @profile.username)
+		render json: @blocks
 	end
 
 	def search
@@ -53,4 +56,14 @@ class Api::V2::HomeController < ApiController
 			render json: {error: 'No query detected'}
 		end
 	end
+
+	def payees
+		render json: @profile.friends
+	end
+
+	private
+
+		def profile
+			@profile = User.where(username: current_user.username).first
+		end
 end

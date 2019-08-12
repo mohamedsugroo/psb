@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get '/current_user', to: 'home#account'
       get '/expense', to: 'home#expense'
       get '/search', to: 'home#search'
+      get '/payees', to: 'home#payees'
 
 
       # routes with emails
