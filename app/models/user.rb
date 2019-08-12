@@ -16,4 +16,12 @@ class User < ApplicationRecord
 	def full_name
 		"#{self.first_name}  #{self.middle_name} #{self.last_name}"
 	end
+
+	def profile 
+		{
+			first_letter: self.full_name.delete(' ')[0],
+			username: self.username,
+			full_name: self.full_name
+		}
+	end
 end

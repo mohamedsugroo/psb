@@ -1,12 +1,8 @@
 class Api::V2::PayeesController < ApiController
 	before_action :current_user
-	before_action :payees_list, only: [:index, :list]
+	before_action :payees_list, only: [:index]
 
 	def index
-		render json: @payees
-	end
-
-	def list
 		render json: @payees
 	end
 
@@ -27,7 +23,7 @@ class Api::V2::PayeesController < ApiController
 		end
 		def payees_list
 			@payeesList = current_user.friends
-			@payees = @payeesList.map { |payee|  payee.user}
+			@payees = @payeesList.map { |payee|  payee.user.profile}
 			return @payees
 		end
 
