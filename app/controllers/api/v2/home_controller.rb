@@ -1,6 +1,5 @@
 class Api::V2::HomeController < ApiController
 	before_action :current_user, only: [:account, :spent, :search]
-	before_action :profile
 
 	def index
 		render json: {
@@ -62,10 +61,4 @@ class Api::V2::HomeController < ApiController
 		@payees = user.friends
 		render json: @payees
 	end
-
-	private
-
-		def profile
-			@profile = User.where(username: current_user.username).first
-		end
 end
