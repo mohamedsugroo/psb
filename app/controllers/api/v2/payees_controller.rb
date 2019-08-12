@@ -22,9 +22,19 @@ class Api::V2::PayeesController < ApiController
 			params.permit(:friend_id)
 		end
 		def payees_list
-			@payeesList = current_user.friends
-			@payees = @payeesList.map { |payee|  payee.user.profile}
-			return @payees
+			myList = Friend.where(user_id: current_user.id)
+			fiends = []
+			myList.each do |list|
+				user = User.where(id: list.friend_id).first
+				fiends.push({
+					username: user.username,
+					full_name: user.full_name.to_s,
+					date_of_birth: user.date_of_with.to_s,
+					birth_place: user.pirth_place
+				})
+			end
+
+			render json: fiends
 		end
 
 end
