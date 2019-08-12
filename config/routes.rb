@@ -18,7 +18,6 @@ Rails.application.routes.draw do
       get '/search', to: 'home#search'
 
       # payees
-      resources :payees, only: [:index, :create]
       post '/add_payee', to: "payees#create"
       post '/payees', to: "payees#index"
 
