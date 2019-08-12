@@ -5,7 +5,13 @@ class Api::V2::PayeesController < ApiController
 		payees = current_user.friends
 		payeeList = []
 		payees.each do |payee|
-			payeeList << User.find_by_id(payee.friend_id)
+			user = User.where(id: payee.friend_id).first
+			payeeList.push({
+				username: user.username,
+				first_name: user.first_name,
+				middle_name: user.middle_name,
+				last_name: user.last_name
+			})
 		end
 		render json: {
 			payees: payeeList
