@@ -1,10 +1,9 @@
 class Api::V2::PayeesController < ApiController
 	before_action :current_user
+	before_action :payees_list, only: [:index]
 
 	def index
-		payees = current_user.friends
-		
-		render json: payees.map { |payee|  payee.user}
+		render json: @payees
 	end
 
 	def create
@@ -21,6 +20,11 @@ class Api::V2::PayeesController < ApiController
 	private
 		def payee_params
 			params.permit(:friend_id)
+		end
+		def payees_list
+			@payeesList = current_user.friends
+			@payees = @payeesList.map { |payee|  payee.user}
+			return @payees
 		end
 
 end
