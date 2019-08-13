@@ -1,4 +1,10 @@
 class Api::V2::UsersController < ApiController
+	before_action :current_user, only: [:show]
+	
+	def show
+		render json: User.find(params[:id]).profile
+	end
+
 	def create
 		
 		@user = User.new(user_params)
