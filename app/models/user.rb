@@ -7,8 +7,8 @@ class User < ApplicationRecord
 	validates :password,
 	        length: { minimum: 6 },
 	        if: -> { new_record? || !password.nil? }
-	has_many :accounts
-	has_many :friends
+	has_many :accounts , dependent: :destroy
+	has_many :friends , dependent: :destroy
 
 	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
 	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/

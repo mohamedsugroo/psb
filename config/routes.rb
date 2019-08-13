@@ -18,8 +18,7 @@ Rails.application.routes.draw do
       get '/search', to: 'home#search'
 
       # payees
-      post '/add_payee', to: "payees#create"
-      post '/payees', to: "payees#index"
+      resources :payees
 
 
 

@@ -1,8 +1,8 @@
 class Api::V1::FriendsController < ApplicationController
-	before_action :authorize_request
+	before_action :current_user
 	
 	def index
-		myList = Friend.where(user_id: authorize_request.id)
+		myList = Friend.where(user_id: current_user.id)
 		fiends = []
 		
 		myList.each do |list|
@@ -23,9 +23,9 @@ class Api::V1::FriendsController < ApplicationController
 	def create
 		newfriend = params[:friend]
 		user = User.where(id: newfriend)
-		@friend = Friend.where(user_id: authorize_request.id).last
+		@friend = Friend.where(user_id: current_user.id).last
 		Friend.create(
-			user_id: authorize_request.id, 
+			user_id: current_user.id, 
 			friend_id: newfriend.to_i
 		)
 		render json: {
