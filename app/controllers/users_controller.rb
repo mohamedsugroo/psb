@@ -1,5 +1,5 @@
-class UsersController < ApplicationController
-  before_action :authorize_request, except: :create
+class UsersController < ApiController
+  before_action :current_user, except: :create
   before_action :find_user, except: %i[create index]
 
   # GET /users
@@ -80,7 +80,7 @@ class UsersController < ApplicationController
       user: {
         id: @user.id,
         username: @user.username,
-        email: @user.emaqil,
+        email: @user.email,
         first_name: @user.first_name.to_s,
         middle_name: @user.middle_name.to_s,
         last_name: @user.last_name.to_s,
