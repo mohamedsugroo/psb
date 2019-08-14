@@ -2,7 +2,15 @@ class Api::V2::PayeesController < ApiController
 	before_action :current_user
 
 	def index
-		render json: current_user.friends
+		payees = Friend.where(user_id: current_user.id)
+		list = []
+		payees.each do |payee|
+			list.push(User.find(payee.friend_id))
+		end
+		render json: {
+			current_user: current_user.profile,
+			payees: list
+		}
 	end
 
 	def show

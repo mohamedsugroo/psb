@@ -1,4 +1,4 @@
-module Api::V2::Lib::Profiler
+module Api::V2::Lib::Profile
 
 	def self.users(users) 
 		users.each do |user|
