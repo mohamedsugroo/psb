@@ -1,10 +1,10 @@
 module Api
 	module V1
 		class PendingrequestsController < ApplicationController
-			before_action :authorize_request
+			before_action :current_user
 
 			def index
-				requests = Pendingtransaction.where(to_user_id: authorize_request.id )
+				requests = Pendingtransaction.where(to_user_id: current_user.id )
 				newreq = []
 
 				requests.each do |req|
@@ -46,7 +46,7 @@ module Api
 
 			def approve
 				pen = Pendingtransaction.find_by(id: params[:id])
-				if authorize_request.id == pen.to_user_id
+				if current_user.id == pen.to_user_id
 					pen.update(aproved: true, declined: false)
 					render json: pen
 				end
@@ -54,16 +54,16 @@ module Api
 
 			def decline
 				pen = Pendingtransaction.find_by(id: params[:id])
-				if authorize_request.id == pen.to_user_id
+				if current_user.id == pen.to_user_id
 					pen.update(aproved: false, declined: true)
 					render json: pen
 				end
 			end
 
 			def pending
-				user = authorize_request.id
-				requests = Pendingtransaction.where(to_user_id: authorize_request.id, aproved: false)
-				requests_history = Pendingtransaction.where(to_user_id: authorize_request.id)
+				user = current_user.id
+				requests = Pendingtransaction.where(to_user_id: current_user.id, aproved: false)
+				requests_history = Pendingtransaction.where(to_user_id: current_user.id)
 				newreq = []
 				history = []
 
@@ -107,20 +107,20 @@ module Api
 			end
 
 			def sent
-				user = authorize_request.id
+				user = current_user.id
 				@pen = Pendingtransaction.where(from_user_id: user)
 				# render json: pen
 			end
 
 			def moneyspent
-				user = authorize_request.username
+				user = current_user.username
 				blocks = Block.where(from: user)
 				render json: blocks
 
 			end
 
 			def moneyincome
-				user = authorize_request.username
+				user = current_user.username
 				blocks = Block.where(to: user)
 				render json: blocks
 			end

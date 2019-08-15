@@ -5,7 +5,7 @@ class UsersController < ApiController
   # GET /users
   def index
     @users = User.all
-    render json: @users, status: :ok
+    render json: @users.each { |u| u.profile}, status: :ok
   end
 
   # GET /users/{username}

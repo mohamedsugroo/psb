@@ -1,7 +1,7 @@
 module Api
   module V1
-    class AppsController < ApplicationController
-      before_action :authorize_request
+    class AppsController < ApiController
+      before_action :current_user
       before_action :set_app, only: [:show, :update, :destroy]
 
       def index
@@ -15,7 +15,7 @@ module Api
 
       def create
         @app = App.new(app_params)
-        @app.user_id = authorize_request.id
+        @app.user_id = current_user.id
 
         if @app.save
           render json: {

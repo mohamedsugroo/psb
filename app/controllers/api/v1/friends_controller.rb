@@ -1,4 +1,4 @@
-class Api::V1::FriendsController < ApplicationController
+class Api::V1::FriendsController < ApiController
 	before_action :current_user
 	
 	def index
