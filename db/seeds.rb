@@ -22,3 +22,14 @@
 # Friend.create(user_id: 2, friend_id: 1)
 
 # App.create(name: '123 Cart', user_id: 1, app_type: 'online shoping cart')
+
+Payee.create(
+    user_id: 1,
+    payee_id: 2,
+    info: {
+        username: 'marco',
+        fullname: 'Marco Polo',
+        initial: 'MP',
+        added: '20/12/2018'
+    }
+)

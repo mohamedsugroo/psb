@@ -6,32 +6,15 @@ class Api::V2::PayeesController < ApiController
 		render json: payees
 	end
 
-	def list
-		myList = Friend.where(user_id: current_user.id)
-		fiends = []
-		
-		myList.each do |list|
-			user = find_user(list.friend_id)
-			fiends.push({
-				username: user.username,
-				first_name: user.first_name.to_s,
-				middle_name: user.middle_name.to_s,
-				last_name: user.last_name.to_s,
-				date_of_birth: user.date_of_with,
-				birth_place: user.pirth_place
-			})
-		end
-
-		render json: fiends
-	end
-
 	def show
-		@payee = Friend.find(params[:id])
+		@payee = Payee.find(params[:id])
 	end
 
 	def create
-		@payee = Friend.new(payee_params)
+		@payee = Payee.new(payee_params)
+		newPayee = User.where(id: @payee.payee_id).first
 		@payee.user_id = current_user.id
+		@payee.info = newPayee.profile
 	    if @payee.save
 	      render json: @payee, status: :created
 	    else
@@ -41,12 +24,12 @@ class Api::V2::PayeesController < ApiController
 	end
 
 	def destroy
-		@payee = Friend.where(id: params[:id]).first
-		@payee.delete
+		@payee = Payee.where(id: params[:id]).first
+		@payee.destroy
 	end
 
 	private
 		def payee_params
-			params.permit(:friend_id)
+			params.permit(:user_id, :payee_id, :info)
 		end
 end

@@ -23,10 +23,9 @@ Rails.application.routes.draw do
 
       # routes with emails
 
+      resources :users, only: [:index ,:create, :update, :show]
       get '/change_password', to: 'users#change_password'
 
-      resources :users, only: [:create, :update, :show]
-      get '/find_user', to: 'users#find_user'
 
       namespace :apps do 
       end # apps

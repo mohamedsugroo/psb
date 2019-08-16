@@ -1,5 +1,9 @@
 class Api::V2::UsersController < ApiController
-	before_action :current_user, only: [:show]
+	before_action :current_user, only: [:index, :show]
+
+	def index
+		@users = User.all
+	end
 	
 	def show
 		render json: User.find(params[:id]).profile
