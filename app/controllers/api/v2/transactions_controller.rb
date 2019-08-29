@@ -1,16 +1,19 @@
 class Api::V2::TransactionsController < ApiController
-
+	before_action :current_user
 	def index
-		account_type = 'merchant'
-		if account_type == 'merchant'
-		    result = Merchant.start
-		elsif account_type == 'accreditor'
-		    result =  Accreditor.start
-		elsif account_type == 'consumer'
-		    result =  Consumer.start
-		end
 
-		render json: result
+	end
+
+	def show
+
+	end
+
+	def expense
+
+	end
+
+	def income
+
 	end
 
 end

@@ -24,7 +24,7 @@ class Api::V2::PayeesController < ApiController
 	end
 
 	def destroy
-		@payee = Payee.where(id: params[:id]).first
+		@payee = Payee.find(params[:id])
 		@payee.destroy
 	end
 

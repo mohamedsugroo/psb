@@ -36,7 +36,7 @@ class Api::V2::HomeController < ApiController
 	end
 
 	def account
-		render json: current_user
+		render json: current_user.profile
 	end
 
 	def expense

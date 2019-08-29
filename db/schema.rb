@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_15_153753) do
+ActiveRecord::Schema.define(version: 2019_08_27_161849) do
 
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 2019_08_15_153753) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "admins", force: :cascade do |t|
+    t.string "username"
+    t.string "role_type"
+    t.string "password_digest"
+    t.string "pin_code"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "apps", force: :cascade do |t|
@@ -111,6 +120,12 @@ ActiveRecord::Schema.define(version: 2019_08_15_153753) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email"
     t.string "username"
@@ -134,6 +149,7 @@ ActiveRecord::Schema.define(version: 2019_08_15_153753) do
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer "role_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     namespace :v2 do
       get '/', to: 'home#index' # root / get
       post '/', to: 'home#index' # root / post
-      get '/login', to: 'home#login' # login user authentication
+      post '/login', to: 'home#login' # login user authentication
       get '/resetpassword', to: 'home#resetpassword'
       get '/check_token', to: 'home#check_token'
       get '/current_user', to: 'home#account'
@@ -19,6 +19,10 @@ Rails.application.routes.draw do
 
       # payees
       resources :payees
+      namespace :admin do
+        get '/', to: 'dashboard#index'
+        post '/login', to: 'dashboard#login'
+      end
 
 
       # routes with emails
