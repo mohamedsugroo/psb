@@ -1,10 +1,11 @@
 class ApiController < ApplicationController
 	# custom modules
-	Crypto = Api::V2::Crypto # encryption module
 	Auth = Api::V2::Auth::ChangePassword # change password module
+	# refactor the imported code bellow and call it com a single transaction module
 	Merchant = Api::V2::Modules::Merchant # Merchant module
 	Accreditor = 	Api::V2::Modules::Accreditor # Accreditor module
 	Consumer = 	Api::V2::Modules::Consumer # Consumer module
+	# end refactoring and replace this code with a single module
 	def index
 		render json: :ok
 	end

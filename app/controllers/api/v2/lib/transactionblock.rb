@@ -1,7 +1,7 @@
 require 'digest'
 class TransactionBlock
 
-    def initialize(data, previous_hash, timestamp: nil, nonce: nil)
+    def initialize(data, , timestamp: nil, nonce: nil)
         @data = data 
         @previous_hash = ''
         @timestamp = timestamp ? timestamp : Time.now.utc
