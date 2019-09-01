@@ -79,5 +79,5 @@ data = {
     }
 }
 
-block = TransactionBlock.new(data, 'wenfinfiwnfwheuefwddwden')
-p block.new
+# block = TransactionBlock.new(data, 'wenfinfiwnfwheuefwddwden')
+# p block.new
