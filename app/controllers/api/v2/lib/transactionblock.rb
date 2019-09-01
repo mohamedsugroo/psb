@@ -1,19 +1,19 @@
 require 'digest'
 class TransactionBlock
 
-    def initialize(data, , timestamp: nil, nonce: nil)
-        @data = data 
+    def initialize(data, timestamp: nil, nonce: nil)
+        @data = data
         @previous_hash = ''
         @timestamp = timestamp ? timestamp : Time.now.utc
         @hash = ''
         if nonce
 			@nonce = nonce
 			@hash  = calc_hash
-		else 
+		else
 			@nonce, @hash = compute_hash_with_proof_of_work
 		end
     end
-    # a new block is requested 
+    # a new block is requested
     def new
         # package the new block and return it to new block request
         calc_hash
@@ -21,7 +21,7 @@ class TransactionBlock
     # get the previuse transaction hash
 
     private
-        # calculate the current transaction hash 
+        # calculate the current transaction hash
         def calc_hash
             calc_hash_with_nonce( @nonce )
         end
@@ -37,10 +37,10 @@ class TransactionBlock
 				end
 			end
         end
-        
+
         def calc_hash_with_nonce( nonce=0 )
 			sha = Digest::SHA256.new
-			sha.update( 
+			sha.update(
 				nonce.to_s +
 				@timestamp.to_s +
                 @data.to_s +
