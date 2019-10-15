@@ -27,7 +27,8 @@ class User < ApplicationRecord
 			first_letter: self.full_name.delete(' ')[0],
 			username: self.username,
 			full_name: self.full_name,
-			email: self.email
+			email: self.email,
+			balance: self.balance,
 		}
 	end
 end

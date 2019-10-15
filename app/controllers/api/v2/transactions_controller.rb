@@ -8,6 +8,19 @@ class Api::V2::TransactionsController < ApiController
 
 	end
 
+	def send_money
+
+	end
+
+	def request_money
+
+	end
+
+
+	def pending_requests
+
+	end
+
 	def expense
 
 	end
