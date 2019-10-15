@@ -21,15 +21,22 @@ class User < ApplicationRecord
 		"#{self.first_name}  #{self.middle_name} #{self.last_name}"
 	end
 
+	def self.current_balance
+		if self.balance
+			return self.balance
+		else
+			return "00.00"
+		end
+	end
+
 	def profile 
-		self.balance = 00.00 if !self.balance
 		{
 			id: self.id,
 			first_letter: self.full_name.delete(' ')[0],
 			username: self.username,
 			full_name: self.full_name,
 			email: self.email,
-			balance: self.balance,
+			balance: self.current_balance,
 		}
 	end
 end
