@@ -21,14 +21,6 @@ class User < ApplicationRecord
 		"#{self.first_name}  #{self.middle_name} #{self.last_name}"
 	end
 
-	def self.current_balance
-		if self.balance
-			return self.balance
-		else
-			return "00.00"
-		end
-	end
-
 	def profile 
 		{
 			id: self.id,
@@ -36,7 +28,7 @@ class User < ApplicationRecord
 			username: self.username,
 			full_name: self.full_name,
 			email: self.email,
-			balance: self.current_balance,
+			balance: self.balance,
 		}
 	end
 end
