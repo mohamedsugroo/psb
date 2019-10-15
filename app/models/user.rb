@@ -22,6 +22,7 @@ class User < ApplicationRecord
 	end
 
 	def profile 
+		self.balance = 00.00 if !self.balance
 		{
 			id: self.id,
 			first_letter: self.full_name.delete(' ')[0],
