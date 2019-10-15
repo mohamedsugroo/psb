@@ -28,7 +28,15 @@ class User < ApplicationRecord
 			username: self.username,
 			full_name: self.full_name,
 			email: self.email,
-			balance: self.balance,
+			balance: self.balance_null_fix,
 		}
+	end
+
+	def self.balance_null_fix
+		if @self.balance.blank?
+			'00.00'
+		else
+			self.balance
+		end
 	end
 end
