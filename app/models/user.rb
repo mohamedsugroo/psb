@@ -40,4 +40,9 @@ class User < ApplicationRecord
 			self.balance 
 		end
 	end
+
+	def friends
+		fr = Friend.where(user_id: self.id)
+		return fr.user
+	end
 end
