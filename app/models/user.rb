@@ -34,9 +34,9 @@ class User < ApplicationRecord
 
 	def balance_null_fix
 		if self.balance.blank?
-			return '00.00'
+			'00.00'
 		else
-			return self.balance
+			self.balance 
 		end
 	end
 end
