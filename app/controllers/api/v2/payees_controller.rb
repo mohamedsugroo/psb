@@ -6,6 +6,11 @@ class Api::V2::PayeesController < ApiController
 		render json: payees
 	end
 
+	def my_payees
+		payee_list = current_user.payees
+		render json: payee_list
+	end
+
 	def show
 		@payee = Payee.find(params[:id])
 	end

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get '/search', to: 'home#search'
 
       # payees
+      get '/payees_list', to: 'payees#my_payees'
       resources :payees
       namespace :admin do
         get '/', to: 'dashboard#index'
