@@ -29,7 +29,7 @@ class User < ApplicationRecord
 			full_name: self.full_name,
 			email: self.email,
 			balance: self.balance_null_fix,
-			friends: current_user.payees
+			friends: self.payees
 		}
 	end
 
